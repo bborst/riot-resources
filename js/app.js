@@ -1,3 +1,3 @@
 
 
-
+riot.mount('nav-bar');
