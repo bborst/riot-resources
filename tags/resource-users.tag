@@ -1,7 +1,7 @@
 <resource-users>
 	<h1>Resource Users</h1>
 
-	<div class="" each={ u in opts.user } data={ this }>{ u.name }</div>
+	<div class="" each={ u in opts.users } data={ this }>{ u.name }</div>
 
 
 	<script>
@@ -14,7 +14,9 @@
 		// Listen for data
 		this.on('data_loaded', function(response) {
 			console.info('Data recieved');
-			opts.user = response;
+			opts.users = response;
+			// Data
+			console.info(opts.users);
 			// Tell riot to rerender
 			this.update();
 		});
