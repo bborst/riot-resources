@@ -13,14 +13,16 @@
 			</div>
 			<div id=collapse{ u.id } class="panel-collapse collapse " role="tabpanel" aria-labelledby=heading{ u.id }>
 				<div class="panel-body">
-					<p>{ u.email }</p>
-					<p>{ u.phone }</p>
-					<p>{ u.username }</p>
-					<p><a href="http://{ u.website }" target="new">{ u.website }</a></p>
+					<ul>
+						<li>Email: { u.email }</li>
+						<li>Phone: { u.phone }</li>
+						<li>Username: { u.username }</li>
+						<li>Website: <a href="http://{ u.website }" target="new">{ u.website }</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
-
+		<!-- // End Loop -->
 	</div>
 
 
@@ -28,8 +30,14 @@
 	<script>
 		// Mounted
 		this.on('mount', function() {
-			console.info('Riot mount event fired');
-			opts.callback(this);
+			// console.info('Riot mount event fired');
+			// TODO: Store data in object so we don't have to keep making call
+			if (opts.users) {
+				console.info('We already have data');
+			} else {
+				console.info('We need the data');
+				opts.callback(this);
+			}
 		});
 
 		// Listen for data
@@ -37,11 +45,10 @@
 			console.info('Data recieved');
 			opts.users = response;
 			// Data
-			console.info(opts.users);
+			// console.info(opts.users);
 			// Tell riot to rerender
 			this.update();
 		});
-
 
 	</script>
 
