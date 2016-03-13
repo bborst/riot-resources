@@ -2,7 +2,7 @@
 
 function tagCallback(theTag) {
 
-	console.info('Callback executed');
+	// console.info('Callback executed');
 
 	// Using YQL and JSONP
 	$.ajax({
@@ -28,33 +28,10 @@ function tagCallback(theTag) {
 	});
 }
 
-function createUserInfo() {
+function createUserInfo(obj) {
 	$.ajax('http://jsonplaceholder.typicode.com/users', {
 		  method: 'POST',
-		  data: {
-			  // Test Data
-			  // Returns unique id
-			  "name": "Bryan",
-			  "username": "Bryan",
-			  "email": "bb@ab.biz",
-			  "address": {
-			    "street": "Kulas Light",
-			    "suite": "Apt. 556",
-			    "city": "Gwenborough",
-			    "zipcode": "92998-3874",
-			    "geo": {
-			      "lat": "-37.3159",
-			      "lng": "81.1496"
-			    }
-			  },
-			  "phone": "1-770-736-8031 x56442",
-			  "website": "hildegard.org",
-			  "company": {
-			    "name": "Romaguera-Crona",
-			    "catchPhrase": "Multi-layered client-server neural-net",
-			    "bs": "harness real-time e-markets"
-			  }
-			}
+		  data: obj
 	}).then(function(data) {
 	  console.log(data);
 	});
